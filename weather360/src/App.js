@@ -27,10 +27,11 @@ useEffect(()=>{
 useEffect(() => {
   axios
     .get(
-      "http://data.fixer.io/api/latest?access_key=e385a9376f90e67c4aaf69fe088e1ae0&format=1"
+      // "http://data.fixer.io/api/latest?access_key=e385a9376f90e67c4aaf69fe088e1ae0&format=1"
+      "https://api.freecurrencyapi.com/v1/latest?apikey=IMiGvKNQNflo9HKlJBFDfiD02qxe8hWRKbPpM29L"
     )
     .then((response) => {
-      setRates(response.data.rates);
+      setRates(response.data.data);
     });
 }, []);
 function format(number){
@@ -129,6 +130,7 @@ function handleCurrency2Change(currency2){
 
       <div className="currencyDiv">
       <h1 className="currencyH1">Currency Converter</h1>
+      <p className="currencyP"><strong>Check live foreign currency exchange rates</strong> </p>
       <CurrencyInput
       onAmountChange={handleAmount1Change}
       onCurrencyChange={handleCurrency1Change}

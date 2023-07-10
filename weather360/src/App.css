@@ -1,11 +1,19 @@
 .currencyDiv{
-    background-color: #161616;
+    /* background-color: #161616; */
+    background-image: url(./assets/currencyBg.jpg);
     color: #ddd;
     padding: 50px;
     
 }
 .currencyH1{
-    padding: 50px;
-    color: #eef;
+    padding: 30px 30px 5px 30px;
+    font-size: 50px;
+    color:black;
     text-align:center;
+}
+.currencyP{
+    color:black;
+    text-align:center;
+    padding-bottom: 20px;
+    font-size: 18px;
 }
