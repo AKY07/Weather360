@@ -3,11 +3,14 @@ import coldBg from "./assets/cold.jpg";
 import Descriptions from "./components/Descriptions";
 import { useEffect, useState } from "react";
 import { getFormattedWeatherData } from "./weatherService";
+import SocialFollow from "./SocialFollow"
 
 //CurrencyCalculator
 import axios from "axios";
 import CurrencyInput from "./CurrencyInput";    
+import Navbar from "./Navbar";
 import "./App.css";
+
 //CurrencyCalculator
 
 
@@ -63,7 +66,7 @@ function handleCurrency2Change(currency2){
 
 
 
-  const [city, setCity] = useState("paris");
+  const [city, setCity] = useState("delhi");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
   const [bg, setBg] = useState(hotBg);
@@ -96,8 +99,13 @@ function handleCurrency2Change(currency2){
   };
 
   return (
-    <div className="app" style={{ backgroundImage: `url(${bg})` }}>
-      <div className="overlay">
+    <>
+    <Navbar />
+    {/* <div className="app" style={{ backgroundImage: `url(${bg})` }}> */}
+    
+    <div className="app">
+ 
+      <div className="overlay" >
         {weather && (
           <div className="container">
             <div className="section section__inputs">
@@ -126,12 +134,20 @@ function handleCurrency2Change(currency2){
           </div>
         )}
       </div>
+      </div>
+      <div className="topdiv">
+      <div className='air air1'></div>
+  <div className='air air2'></div>
+  <div className='air air3'></div>
+  <div className='air air4'></div>
+  </div>
       {/* CurrencyCalculator */}
-
+       
       <div className="currencyDiv">
       <h1 className="currencyH1">Currency Converter</h1>
       <p className="currencyP"><strong>Check live foreign currency exchange rates</strong> </p>
       <CurrencyInput
+    
       onAmountChange={handleAmount1Change}
       onCurrencyChange={handleCurrency1Change}
         currencies={Object.keys(rates)}
@@ -146,10 +162,12 @@ function handleCurrency2Change(currency2){
         amount={amount2}
         currency={currency2}
       />
-    </div>
+    
 
       {/* CurrencyCalculator */}
     </div>
+    <SocialFollow />
+    </>
   );
 }
 
