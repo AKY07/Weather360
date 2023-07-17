@@ -344,3 +344,32 @@ to {
 80%  { background: #33CC36; }
 100% { background: #33CCCC; }
 }
+
+.divTempss{
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+/* justify-content: space-between; */
+justify-content: center;
+align-items: center;
+}
+.divCu{
+  display: block;
+}
+.divT2{
+  display: block;
+  padding-left: 30px;
+  padding-bottom: 20px;
+}
+.divT1{
+  display: block;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+.divT1 h1{
+  color:rgb(162, 237, 13);
+}
+
+.divT2 h1{
+  color:rgb(162, 237, 13);
+}
