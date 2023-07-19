@@ -20,7 +20,6 @@ function App() {
   const [currency1, setCurrency1] = useState("INR");
   const [currency2, setCurrency2] = useState("USD");
   const [rates, setRates] = useState([]);
- 
 
   useEffect(() => {
     if (!!rates) {
@@ -60,9 +59,6 @@ function App() {
   }
 
   //Country Code Captail
-let countryy={
-  sydney:"Australia"
-}
   let captail = {
     AUD: "sydney",
     BGN: "varna",
@@ -99,56 +95,6 @@ let countryy={
     ZAR: "cape town",
   };
 
-  // console.log(cityy)
-  // let url1=`https://api.openweathermap.org/data/2.5/weather?q=${captail.AUD}&appid=8f1251b6c062fe2f8bcbb77302f5f50b&units=metric`
-  // console.log(url1)
-
-  // useEffect(() => {
-
-  //   axios
-  //     .get(
-  //       // let cityyy=captail[currency2];
-  //       // "http://data.fixer.io/api/latest?access_key=e385a9376f90e67c4aaf69fe088e1ae0&format=1"
-  //       `https://api.openweathermap.org/data/2.5/weather?q=${captail[currency2]}&appid=8f1251b6c062fe2f8bcbb77302f5f50b&units=metric`
-  //     )
-  //     .then((response) => {
-  //       setTemp(response.data.main.temp);
-
-  //     });
-  // }, []);
-  // console.log(temps)
-
-  // console.log(captail.a)
-  // console.log(captail[currency2])
-  // let cityy=captail[currency2];
-  // const getFormattedTempWeatherData= async (cityy, units = "metric") => {
-  //   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityy}&appid=8f1251b6c062fe2f8bcbb77302f5f50b&units=metric&units=${units}`;
-  //   const data = await fetch(URL)
-  //     .then((res) => res.json())
-  //     .then((data) => data);
-  //   const {
-  //     weather,
-  //     main: { temp, feels_like, temp_min, temp_max, pressure, humidity },
-  //     wind: { speed },
-  //     sys: { country },
-  //     name,
-  //   } = data;
-  //   const { description } = weather[0];
-  //   return {
-  //     description,
-  //     // iconURL:makeIconURL(icon),
-  //     temp,
-  //     feels_like,
-  //     temp_min,
-  //     temp_max,
-  //     pressure,
-  //     humidity,
-  //     speed,
-  //     country,
-  //     name,
-  //   };
-  // };
-
   //CurrencyCalculator
 
   const [city, setCity] = useState("delhi");
@@ -156,7 +102,7 @@ let countryy={
   const [units, setUnits] = useState("metric");
   const [bg, setBg] = useState(hotBg);
   const [temps, setTemp] = useState(0);
-  const [tempss,setTemps]=useState(0);
+  const [tempss, setTemps] = useState(0);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -164,9 +110,9 @@ let countryy={
       setWeather(data);
 
       //dynamic bg
-      const threshold = units === "metric" ? 20 : 60;
-      if (data.temp <= threshold) setBg(coldBg);
-      else setBg(hotBg);
+      // const threshold = units === "metric" ? 20 : 60;
+      // if (data.temp <= threshold) setBg(coldBg);
+      // else setBg(hotBg);
     };
     fetchWeatherData();
   }, [units, city]);
@@ -175,11 +121,6 @@ let countryy={
     const fetchWeatherData1 = async () => {
       const data = await getFormattedWeatherData(captail[currency2], units);
       setTemp(data);
-
-      //dynamic bg
-      // const threshold = units === "metric" ? 20 : 60;
-      // if (data.temp <= threshold) setBg(coldBg);
-      // else setBg(hotBg);
     };
     fetchWeatherData1();
   }, [units, captail[currency2]]);
@@ -188,11 +129,6 @@ let countryy={
     const fetchWeatherData2 = async () => {
       const data = await getFormattedWeatherData(captail[currency1], units);
       setTemps(data);
-
-      //dynamic bg
-      // const threshold = units === "metric" ? 20 : 60;
-      // if (data.temp <= threshold) setBg(coldBg);
-      // else setBg(hotBg);
     };
     fetchWeatherData2();
   }, [units, captail[currency1]]);
@@ -205,7 +141,7 @@ let countryy={
     setUnits(isCelcius ? "metric" : "imperial");
   };
   const enterKeyPressed = (e) => {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13) {            //13-enter key
       setCity(e.currentTarget.value);
       e.currentTarget.blur();
     }
@@ -234,9 +170,6 @@ let countryy={
                   <h3>{`${weather.name},${weather.country}`}</h3>
                   <img src={weather.iconURL} alt="weatherIcon" />
                   <h3>{weather.description}</h3>
-                  
-                  
-                  
                 </div>
                 <div className="temperature">
                   <h1>{`${weather.temp.toFixed()}°${
@@ -266,43 +199,43 @@ let countryy={
 
         <div className="divTempss">
           <div className="divT1">
-          {tempss && <h3>{`${tempss.name},${tempss.country}`}</h3> 
-       }
-       {tempss && <div>
-                  <h1>{`${tempss.temp.toFixed()}°${
-                    units === "metric" ? "C" : "F"
-                  } `}</h1>
-                </div>}
-                
-       </div>
-<div className="divCu">
-        <CurrencyInput
-          onAmountChange={handleAmount1Change}
-          onCurrencyChange={handleCurrency1Change}
-          currencies={Object.keys(rates)}
-          amount={amount1}
-          currency={currency1}
-        />
-        <CurrencyInput
-          onAmountChange={handleAmount2Change}
-          onCurrencyChange={handleCurrency2Change}
-          currencies={Object.keys(rates)}
-          amount={amount2}
-          currency={currency2}
-        />
+            {tempss && <h3>{`${tempss.name},${tempss.country}`}</h3>}
+            {tempss && (
+              <div>
+                <h1>{`${tempss.temp.toFixed()}°${
+                  units === "metric" ? "C" : "F"
+                } `}</h1>
+              </div>
+            )}
+          </div>
+          <div className="divCu">
+            <CurrencyInput
+              onAmountChange={handleAmount1Change}
+              onCurrencyChange={handleCurrency1Change}
+              currencies={Object.keys(rates)}
+              amount={amount1}
+              currency={currency1}
+            />
+            <CurrencyInput
+              onAmountChange={handleAmount2Change}
+              onCurrencyChange={handleCurrency2Change}
+              currencies={Object.keys(rates)}
+              amount={amount2}
+              currency={currency2}
+            />
+          </div>
+          {/* {temps} */}
+          <div className="divT2">
+            {temps && <h3>{`${temps.name},${temps.country}`}</h3>}
+            {temps && (
+              <div>
+                <h1>{`${temps.temp.toFixed()}°${
+                  units === "metric" ? "C" : "F"
+                } `}</h1>
+              </div>
+            )}
+          </div>
         </div>
-        {/* {temps} */}
-        <div className="divT2">
-       {temps && <h3>{`${temps.name},${temps.country}`}</h3> 
-       }
-       {temps && <div>
-                  <h1>{`${temps.temp.toFixed()}°${
-                    units === "metric" ? "C" : "F"
-                  } `}</h1>
-                </div>}
-                </div>
-
-                </div>
         {/* CurrencyCalculator */}
       </div>
       <SocialFollow />
